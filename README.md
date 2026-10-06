@@ -1,31 +1,33 @@
-# Servidor (Sockets TCP em C) 🖧
+# Cliente (Sockets TCP em C) 🖧
 
-Lado **servidor** de uma aplicação **cliente-servidor** baseada em **sockets TCP/IP**, escrita em **C**. O servidor mantém um catálogo de filmes e responde às requisições do cliente.
+Lado **cliente** de uma aplicação **cliente-servidor** de **locadora de filmes**, baseada em **sockets TCP/IP** e escrita em **C**. Conecta ao servidor, envia a operação, o código do cliente e o nome do filme, e exibe a resposta.
 
 ## ✨ Características
 
-- Comunicação via **sockets TCP** (porta 2000)
-- Código **multiplataforma**: usa `winsock` no Windows e sockets POSIX no Linux/Unix
-- Gerencia um catálogo (`struct Filmes`) com status de cada item
-- Atende conexões de clientes e troca dados pela rede
+- Comunicação via **socket TCP**, conectando na **porta 2000**
+- Pede o **IP do servidor** ao iniciar
+- Envia ao servidor a **operação**, o **código do cliente** e o **nome do filme**
+- Usa `winsock` no Windows e sockets POSIX no Linux/Unix
 
 ## 🛠️ Tecnologias
 
 ![C](https://img.shields.io/badge/C-00599C?style=flat&logo=c&logoColor=white)
 
-- **C** + API de **sockets** (Berkeley sockets / Winsock)
+- **C** + API de **sockets** (Winsock / Berkeley sockets)
 
 ## 🚀 Como executar
 
-```bash
-# Linux
-gcc servidor.c -o servidor
-./servidor
+Abra o projeto `cliente.dev` no **Dev-C++** e compile, ou pelo terminal:
 
-# Windows (MinGW): linkar com a winsock
-gcc servidor.c -o servidor -lwsock32
+```bash
+# Windows (MinGW)
+gcc cliente.c -o cliente -lwsock32
+
+# Linux
+gcc cliente.c -o cliente
+./cliente
 ```
 
-## 🔗 Cliente
+## 🔗 Servidor
 
-Use junto com o repositório [`Cliente`](https://github.com/limongi1234/Cliente), que faz as requisições a este servidor.
+Use junto com o repositório [`Servidor`](https://github.com/limongi1234/Servidor). Inicie o servidor primeiro; os dois usam a porta **2000**.
